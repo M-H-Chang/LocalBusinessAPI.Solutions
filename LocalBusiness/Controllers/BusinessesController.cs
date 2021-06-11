@@ -25,6 +25,7 @@ namespace LocalBusiness.Controllers
       {
         query = query.Where(entry => entry.Name == name);
       }
+      return await query.ToListAsync();
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<Business>> GetBusiness(int id)
