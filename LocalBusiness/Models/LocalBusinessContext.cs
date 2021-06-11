@@ -1,0 +1,21 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+namespace LocalBusiness.Models
+{
+  public class LocalBusinessContext : DbContext
+  {
+    public LocalBusinessContext(DbContextOptions<LocalBusinessContext> options) : base(options)
+    {
+
+    }
+
+    public DbSet<Business> Businesses { get; set; }
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+      builder.Entity<Business>()
+      .HasData(
+        new Business { BusinessId = 1, Name = "Pho Than Brothers" }
+      );
+    }
+  }
+}
